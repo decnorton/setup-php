@@ -62,10 +62,10 @@ export async function addExtensionDarwin(
     let install_command: string = '';
     switch (version + extension) {
       case '5.6xdebug':
-        install_command = 'sudo pecl install xdebug-2.5.5 >/dev/null 2>&1';
+        install_command = 'sudo pecl install xdebug-2.5.5 ';
         break;
       default:
-        install_command = 'sudo pecl install ' + extension + ' >/dev/null 2>&1';
+        install_command = 'sudo pecl install ' + extension + ' ';
         break;
     }
     script +=
@@ -147,7 +147,7 @@ export async function addExtensionLinux(
           path.join(__dirname, '../src/scripts/phalcon.sh') +
           ' master ' +
           version +
-          ' >/dev/null 2>&1';
+          ' ';
         break;
       case '7.2phalcon4':
       case '7.3phalcon4':
@@ -157,7 +157,7 @@ export async function addExtensionLinux(
           path.join(__dirname, '../src/scripts/phalcon.sh') +
           ' 4.0.x ' +
           version +
-          ' >/dev/null 2>&1';
+          ' ';
         break;
       default:
         install_command =
@@ -165,9 +165,9 @@ export async function addExtensionLinux(
           version +
           '-' +
           extension.replace('pdo_', '').replace('pdo-', '') +
-          ' >/dev/null 2>&1 || sudo pecl install ' +
+          '  || sudo pecl install ' +
           extension +
-          ' >/dev/null 2>&1';
+          ' ';
         break;
     }
     script +=
