@@ -3,7 +3,9 @@ import * as core from '@actions/core';
 import * as config from './config';
 import * as coverage from './coverage';
 import * as extensions from './extensions';
+import { addMatchers } from './matchers';
 import * as utils from './utils';
+import * as path from 'path';
 
 /**
  * Build the script
@@ -62,6 +64,8 @@ export async function run() {
         );
         break;
     }
+
+    addMatchers();
   } catch (error) {
     core.setFailed(error.message);
   }
