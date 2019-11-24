@@ -145,14 +145,13 @@ describe('Install', () => {
     expect(script).toContain('sh script.sh 7.3 ' + __dirname);
   });
 
-
   describe('Matchers', () => {
     let originalLogMethod: any;
     let outputData: any[] = [];
 
     beforeAll(() => {
       originalLogMethod = console.log;
-      console['log'] = jest.fn(inputs => (outputData.push(inputs)));
+      console['log'] = jest.fn(inputs => outputData.push(inputs));
     });
 
     beforeEach(() => {
@@ -167,7 +166,11 @@ describe('Install', () => {
       matchers.addMatchers();
 
       expect(outputData).toEqual([
-        `##[add-matcher]${path.join(__dirname, '..', '.github/matchers/phpunit.json')}`
+        `##[add-matcher]${path.join(
+          __dirname,
+          '..',
+          '.github/matchers/phpunit.json'
+        )}`
       ]);
     });
   });
